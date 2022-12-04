@@ -68,10 +68,10 @@ router.post("/auth", async (req, res) => {
   })
 });
 
+// 내 정보 조회 API구현하기
 const authMiddleWare = require("./middlewares/auth_middleware.js");
-
-router.get("/users/me", authMiddleWare, async (req, res) => {
-
+router.get("/users/me", authMiddleWare, async (req, res) => {   //authoMiddleware를 탄 다음에 api 실행 
+  res.json({user: res.locals.user});
 });
 
 //urlencoded를 사용할 것이기 때문에 미들웨어를 통과할 수 있도록 16번째 줄 앞에다가 만들거야.
